@@ -1,0 +1,249 @@
+\documentclass[document]{article}
+\usepackage[DIV=11]{typearea}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\usepackage[english]{babel}
+
+
+
+%\NewDocumentCommand{\evalat}{sO{\big}mm}{%
+%  \IfBooleanTF{#1}
+%   {\mleft. #3 \mright|_{#4}}
+%   {#3#2|_{#4}}%
+%}
+\linespread{1}
+
+
+
+\begin{document}
+\title{\textsc{}}
+\maketitle
+\tableofcontents
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{outcome}{Outcome}
+\newtheorem{proposition}{Proposition}
+\newtheorem{problem}{Problem}
+
+\section{Before midterm}
+\subsection{Assignment 4}
+
+\begin{problem}[3.B] A collection $\Sigma$ of subsets of a set $X$ is a base for a certain topology on $X$ iff $X$ is a union of of all sets in $\Sigma$ and the intersection of any two sets in $\Sigma$ is the union of some sets in $\Sigma$.\\
+
+\noindent Proof: $(\impliedby)$ Let $\Sigma$ be a collection of subsets of a set $X$. Suppose that $X$ is the union of all sets in $\Sigma$ and the intersection of any two sets in $\Sigma$ is the union of some sets in $\Sigma$. Then, I want to show that $\Sigma$ is a base for a topology on $X$. I will do this by proving that the collection of arbitrary unions of elements of $\Sigma$ satisfy the three properties of topological structure.\\
+
+\noindent Let $T$ be a collection of arbitrary unions of sets $\sigma$ in $\Sigma$. Since the union of all sets in $\Sigma$ is $X$, $X\in T$. Also, $T$ contains $\varnothing$ since $\cup_{i\in \varnothing} \sigma_i = \varnothing$.\\
+
+\noindent Next, notice that arbitrary union of elements of $T$ is again in $T$, since 
+\begin{align}
+    \bigcup_{j\in J}\left(\bigcup_{i_j\in I_j} \sigma_i \right) = \bigcup_{k \in K} \sigma_k \in T.
+\end{align}
+Also, the finite intersection of elements in $T$ is again in $T$, since the intersection of two elements of $T$ are in $T$. (The intersection of two elements is suffice to prove the intersection of a finite collection.)
+\begin{align}
+    \left( \bigcup_{i\in I} \sigma_{i}\right) \bigcap \left( \bigcup_{j\in J} \sigma_{j}\right) 
+    = \bigcup_{i\in I, j\in J} \left( \sigma_{i} \bigcap \sigma_{j} \right) = \bigcup_{i\in I, j\in J} \bigcup_{k_{ij}\in K_{ij}} \sigma_{k_{ij}} = \bigcup_{l\in L} \sigma_l \in T
+\end{align}
+since, by assumption, the intersection of $\sigma_i$ and $\sigma_j$ of $\Sigma$ is union of some elements of $\Sigma$. Hence, $T$ is a topology on $X$, and a collection $\Sigma$ of subsets of a set $X$ is a base for $T$.\\
+
+\noindent $(\implies)$ Suppose that a collection $\Sigma$ of subsets of a set $X$ is a base for a certain topology $\Omega$ on $X$. \\
+
+\noindent Notice that since $X$ is an open set in all topologies on $X$, $X$ is the union of some sets in $\Sigma$ by the definition of base. And, since the sets in $\Sigma$ are subsets of $X$, $X$ is the union of all sets in $\Sigma$.\\
+
+\noindent Notice that since $\sigma_i \in \Sigma$ is open, the intersection of two sets in $\Sigma$ is open by the definition of topology. Then, the intersection of two sets is a union of some sets in $\Sigma$ by the definition of base. 
+
+\end{problem}
+
+\begin{problem}[3.4] What topological structures have exactly one base?\\
+
+% Hint: The whole topological structure is its own base. So, the question is, when is this the only base. No open set in such a space is the union of two open sets distinct from the entire space. Hence, open sets are linearly ordered by inclusion. Furthermore, the space should contain no increasing infinite sequence of open sets (what is an increasing infinite sequence of open sets?)since, otherwise, an open set could be obtained as a union of sets in such a sequence.\\
+
+Let us find the topological structure $\Omega$ for some set $X$ such that there is precisely one base. Note that for a given base, there is a unique topology, and for a given topology, there can be more than one bases. For a given topology $T$ on $X$, we note that if there exists a pair of open subset $U, V$ such that it is not $U \subset V$ and not $V \subset U$, then there exists at least two bases for T. To show this, note that $U \cup V$ is also an open subset, and hence should be represented as a union of base elements. We can either do this by choosing the base elements $U, V$ or choosing the base elements $U, V, U \cup V$. Since this is true for any pair of open subsets, in order to have a unique base, we require $U \subset V$ or $V \subset U$ holds for every pair of open subsets. This is equivalent to saying that the open sets satisfy a sequence $\varnothing \subset U \subset \cdots \subset V \subset X$. Furthermore, notice that the space should not contain any increasing infinite sequence of open sets, because an open set may the result of the union of sets in the sequence that is distinct from the whole space. Consider a topology on $(0,1)$ where the open sets are $(0, 1-\frac{1}{n})$, where $n \in \mathbb{N}$. Then, $\bigcup_{n\in\mathbb{N}} (0, 1-\frac{1}{n}) = (0,1)$, which allows for more than one base. 
+\end{problem} %my love baby
+
+\begin{problem}[3.11] Show that the $T_1$-topology on the real line is coarser than the canonical topology.\\
+
+% Hint: You must only prove that $\mathbb{R} \setminus {x_i}_{i=1}^n$ is open in the canonical topology of the line.
+
+Let us show that the $T_1$-topology on $\mathbb{R}$ denoted as $\Omega_{T_1}$ given by the empty set and complements of all finite subsets of $\mathbb{R}$ satisfies $\Omega_{T_1} \subset \Omega$ where $\Omega$ is the standard topology on $\mathbb{R}$. We need to show that for any finite subset $y \in \mathbb{R}$, it is possible to express its complement as an arbitrary union of open intervals $\mathbb{R}\setminus y = \bigcup_{i\in I} (a_i,b_i)$ for $a,b \in \mathbb{R}$. You can always do this since you can express $\mathbb{R} \setminus y$ as
+\begin{align}
+    \left(\bigcup_{n\in \mathbb{N}} (\min{y}-n, \min{y}) \right)\bigcup \left(\bigcup_{n \in \mathbb{N}} (\max{y}, \max{y}+n) \right) \bigcup \left(\bigcup_{i=1}^{N} (y_i, y_{i+1}) \right)
+\end{align}
+where ordering the elements in $y$, we have $\{y_1, y_2, \cdots, y_N \}$.
+\end{problem}
+
+\begin{problem}[4.7] What are the balls and spheres in $\mathbb{R}^2$ equipped with the metrics of 4.1 and 4.2?\\
+\noindent 4.1. $\mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}_+ : \left(x,y\right) \mapsto max_{i=1,...,n} \left| x_i - y_i\right|$\\
+\noindent 4.2. $\mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}_+ : \left(x,y\right) \mapsto \sum_{i=1}^n \left| x_i - y_i\right|$\\
+
+% Hint: Squares with sides parallel to the coordinate axes and bisectors of the coordinate angles, respectively.
+
+For a metric space $(\mathbb{R}^2,\rho^{(p)})$, the ball is one of the bases for the plane, $B_r^{(p)}(c)=\Sigma^{(p)}$, with its center at $c \in \mathbb{R}^2$. Notice that the metric of 4.1 is $p^{(\infty)}$, and the metric of 4.2 is $p^{(1)}$. In particular, for $p=\infty$, the ball in the metric space $(\mathbb{R}^2, \rho^{(\infty)})$ given by $B_r^{(\infty)}(y) = \{ x \in \mathbb{R}^2 | \max_{i=1,2}\{|x_i-y_i|\} < r \}$ is $\Sigma^\infty$, which are open squares with sides parallel to the coordinate axes, with the Euclidean distance from $y$ to any nearest point of edges being $r$. For $p=1$, the ball in the metric space $(\mathbb{R}^2, \rho^{(1)})$ given by $B_r^{(1)}(y) = \{ x \in \mathbb{R}^2 | \sum_{i=1}^2 |x_i-y_i| < r \}$ is $\Sigma^1$, which are open squares such that its diagonals are parallel to the coordinate axes, with length given by the Euclidean metric from $y$ to any vertex is $r$.
+
+\end{problem}
+
+\begin{problem}[4.8] Find $D_1(a), D_{1/2}(a)$ and $S_{1/2}(a)$ in the space of 4.A.\\
+
+% Hint: We have D_1(a) = X, D_{1/2}(a) = {a} and S_{1/2}(a)= empty set. 
+
+For a metric space $\left(X,\rho\right)$ with $\rho(x,y) =  \begin{cases} 0 & \text{if} \ x=y \\ 1 & \text{if} \ x\neq y \end{cases}$, we have
+\begin{align}
+    D_r(a)&=\begin{cases} \{a\} & r < 1 \\ X & r \geq 1 \end{cases} \\
+    D_1(a)&=X, D_{1/2}(a)=\{a\} \\
+    S_r(a)&=\begin{cases} \{a\} & r=0 \\ X/\{a\} & r=1 \\ \varnothing & \text{otherwise} \end{cases} \\
+    S_{1/2}(a) &= \varnothing
+\end{align}
+\end{problem}
+
+\begin{problem}[4.9] Find a metric space and two balls in it such that the ball with the smaller radius contains the ball with the bigger one and does not coincide with it.\\
+
+% Hint: For example, let X = D_1(0) \subset R^1. Then, D_{3/2}(5/6) \subset D_1(0). 
+
+Let us find a metric space $(X,\rho)$ and $a_r, a_R \in X$ such that $B_R(a_R) \subsetneq B_r(a_r)$ where $r<R,$ and $r, R \in \mathbb{R_+}.$ Consider the following metric in $\mathbb{R}^n$, where $|| \cdot ||$ is the Euclidean metric $(||x||=(x_1^2+\cdots+x_n^2)^{1/2})$.
+\begin{align}
+    \rho: \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}_+ : (x,y) \mapsto \begin{cases} ||x||+||y|| & x \neq y \\ 0 & x=y \\ \end{cases}.
+\end{align}
+Notice that this is a metric. $\rho(x,x) = 0$ by construction. Next,  $\rho(x,y) = ||x|| + ||y|| = ||y|| + ||x|| = \rho(y,x)$. Also, $\rho(x,y)$ = $||x|| + ||y|| \leq  ||x||+||z||+||z||+||y||= \rho(x,z) + \rho(z,y)$. As an example, consider $\mathbb{R}^2$, where the two balls are $B_{3/2} (0,0)$ and $B_2 (1,0)$. Note that $B_{3/2}(0,0) = \{x \in \mathbb{R}^2 | \rho(x,y)<3/2, y= (0,0) \in \mathbb{R}^2 \} = \{x=(a,b)\in \mathbb{R}^2 |\sqrt{a^2+b^2}+\sqrt{0^2+0^2} = \sqrt{a^2+b^2} <3/2 \}$ while
+\begin{align}
+    B_2 (1,0)=\{(1,0)\} \bigcup \{(x,y)|\sqrt{x^2+y^2} < 1\} \subsetneq B_{2/3} (0,0).
+\end{align} Notice that the radius of the second ball is greater than the first one since $(3/2<2)$. These examples can easily be constructed in $\mathbb{R}^n$ by analogy. (The intuition for this metric is that the `distance' between two points $x,y \in \mathbb{R}^n$ defined by this metric is the distance of travelling from $x$ to $O$, the origin, and to $y$.)
+\end{problem}
+
+\begin{problem}[4.10] What is the minimal number of points in the space which is required to be constructed in 4.9?\\
+
+% Hint: Three points suffice
+
+Consider the metric space $(X,\rho)$ where $X$ has only one point $x$. A ball with 0 radius $B_0$ is an empty set. Every other ball with nonzero radius $B_{r>0}$ is exactly $X$, since from the definition of metric, $\rho(x,x)=0$. Hence, there is no case where a ball with bigger radius is contained in the ball with smaller radius and they do not coincide. Now, consider the metric space $(X,\rho)$ where $X$ has two elements $x,y$. Similarly, a ball with zero radius is an empty set. For other ball with nonzero radius, note that two balls centered at the same point can never achieve the case in 4.9 since $B_r{(x)} \subset B_R(x)$ if $r<R$ and same for $y$. Thus, the only case left is $B_r{(x)}$ and $B_R({y})$, where without loss of generality, we chose $r<R$ for $x, y$. We should look for $B_r(x)=\{x,y\}$ and $B_R(y)=\{y\}$. However, note that $\rho(x,y)=\rho(y,x)$ and if $\rho(x,y) < r$, since $y \in B_r(x)$, then $\rho(y,x) < R$ so $x$ must be in $B_R(y)$. Hence, for two-point set metric space $(X, \rho)$, we cannot establish 4.9. For a three-point set $X$, we have an explicit example. Recall the metric space $(\mathbb{R}^2, \rho)$ in 4.9. Restrict the set $X$ to its subset with three points $X'=\{(0,0), (1,0), (2.9/2,0)$. Notice that $B_2(1,0)=\{(1,0),(0,0)\} \subsetneq B_{3/2}(0,0)=\{(0,0), (1,0), (2.9/2,0)\}$. Hence the minimum number of points in $X$ such that 4.9 is established is 3.
+
+\end{problem}
+
+\begin{problem}[4.11] Prove that the largest radius in 4.9 is at most twice the smaller radius.\\
+
+% Hint: Let R>r and let D_R(b) \subset D_r(a). Take c \in D_R(b) and use the triangle inequality p(b,c) \leq p(b,a) + p(a+c). 
+
+Suppose that $D_R(b) \subset D_r(a)$, where $D_r(a)$ and $D_R(b)$ are balls in the metric space ($X$,$\rho$) as defined in 4.9, and $r<R$. Take any $c \in D_R(b) \subset D_r(a)$. Since ($X$, $\rho$) is a metric space, the triangle inequality, $\rho(b,c) \leq \rho(b,a) + \rho(a,c)$ must hold. Also, it must be that $\rho(b,c)$ is at most $R$ and $\rho(b,a)$ and $\rho(a,c)$ are at most $r$. Then we have that $\rho(b,c) \leq R \leq \rho(b,a)+\rho(a,c) \leq 2r$. Thus, $R \leq 2r$.
+\end{problem} %Good my love!
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Assignment 5}
+
+\begin{problem}[4.J] An indiscrete space is not metrizable if it is not a singleton (otherwise, it has too few open sets). \\
+
+% Hint: The indiscrete space does not have sufficiently many open sets. For x,y in X and r = p(x,y)>0, the ball D_r(x) is nonempty and does not coincide with the whole space (it does not contain y).
+
+Let us prove that an indiscrete space on a set $X$ is not metrizable unless it is one-point (intuitively, it has too few open sets). Assume that the indiscrete topology $\{\varnothing, X\}$ is generated by a metric $\rho$ of the metric space $(X,\rho)$. This means that all open balls in the metric space $(X, \rho)$ is precisely $\{\varnothing, X\}$. Since every ball with nonzero radius contains its center, they must be exactly $X$. This means that for any $x\in X$, $B_r(x) = \{y\in X| \rho(x,y)<r\}=X$ for all $r>0$. In other words, $\rho(x,y) <r$ for all $r>0$. From analysis, this means that $\rho(x,y)=0$ for all $x,y \in X$. Since we assumed that $\rho$ is a metric, i.e. $\rho(x,y)=0 \iff x=0$, this is not contradictory only if $X=\{x\}$. If $X$ has more than two elements, there exists $x,y\in X$ such that $x\neq y$ and $\rho(x,y)$, which makes it contradictory with $\rho$ being a metric.
+\end{problem}
+
+\begin{problem}[4.K]A finite space $X$ is metrizable iff it is discrete.\\
+
+% Hint: (->) For x in X, put r = min{p(x,y) | y in X\x}. Which points are in B_r(x)? (<-) Obvious.
+
+Let us prove that a finite space $X$ is metrizable iff it is discrete.
+\end{problem}
+
+\begin{problem}[4.32] 1) Prove that if $\rho_1$ and $\rho_2$ are two metrics in $X$, then $\rho_1 + \rho_2$ and max$\left{\rho_1,\rho_2\right}$ are also metrics. 2) Are the functions min$\left{\rho_1,\rho_2\right}$, $\rho_1\rho_2$ and $\rho_1$/$\rho_2$ metrics? (By definition, for $\rho = \rho_1/\rho_2$ we put $\rho(x,x)=0$.)\\
+
+% Hint: Clearly, the only thing in all five cases which is to be proved and is not completely obvious is the triangle inequality. It is also obvious for p_1 + p_2. Furthermore, p_1(x,y) \leq p_1(x,z) + p_1(z,y) \leq max{p_1(x,z),p_2(x,z)} + max(p_1(y,z),p_2(y,z). A similar inequality holds true for p_2(x,y), and, therefore, max{p_1,p_2} is a metric. Construct examples which would prove that neither min{p_1,p_2}, nor p_1/p_2, nor p_1p_2 is a metric. (To do this, it would suffice to find three points with appropriate pairwise distances.)
+
+Let us prove that if $\rho_1, \rho_2$ are metrics in $X$, then $\rho_1+\rho_2$ and $\max\{\rho_1,\rho_2\}$ are also metrics.\\
+First, define $\rho=\rho_1+\rho_2$. We have $\rho(x,y)=\rho_1(x,y)+\rho_2(x,y)=0 \iff \rho_1(x,y)=0$ and $\rho_2(x,y)=0 \iff x=y$ and $\rho(x,y)=\rho_1(x,y)+\rho_2(x,y)=\rho_1(y,x)+\rho_2(y,x)=\rho(y,x)$ as well as the triangular inequality
+\begin{align}
+    \rho(x,y)&=\rho_1(x,y)+\rho_2(x,y) \leq \rho_1(x,z)+\rho_(z,y)+\rho_2(x,z)+\rho_2(z,y)\\
+    &=\rho_1(x,z)+\rho_2(x,z)+\rho_1(z,y)+\rho_2(z,y)=\rho(x,z)+\rho(z,y)    
+\end{align}
+which proves that $\rho$ is a metric. Now, we define $\rho'=\max\{\rho_1,\rho_2\}$. Again, we have $\rho'(x,y)=\max\{\rho_1(x,y),\rho_2(x,y)\}=0 \iff \rho_1(x,y)=0$ and $\rho_2(x,y)=0$ (since both $\rho_1,2(x,y) \geq 0$) $\iff x=y$, and we also have $\rho'(x,y)=\max\{\rho_1(x,y),\rho_2(x,y)\}=\max\{\rho_1(y,x),\rho_2(y,x)\}=\rho'(y,x)$, as well as the triangular inequality:
+\begin{align}
+    \rho'(x,y) &= \max\{\rho_1(x,y),\rho_2(x,y)\}\\
+    &\leq \max\{\rho_1(x,y), \rho_2(x,y), \rho_1(x,z)+\rho_2(z,y), \rho_2(x,z)+\rho_1(z,y), \} \\
+    &\leq \max\{\rho_1(x,z)+\rho_1(z,y), \rho_1(x,z)+\rho_2(z,y), \rho_2(x,z)+\rho_1(z,y), \rho_2(x,z)+\rho_2(z,y)\}\\
+    &= \max\{\rho_1(x,z),\rho_2(x,z)\}+\max\{\rho_1(z,y),\rho_2(z,y)\}\\
+    &=\rho'(x,z)+\rho'(z,y)
+\end{align}
+Hence, $\rho'$ is a metric.
+
+Let us also prove (or disprove) that $\min\{\rho_1,\rho_2\}, \rho_1/\rho_2,$ and $\rho_1\rho_2$ are metrics, where we define $\rho(x,x)=0$ for $\rho=\rho_1/\rho_2$. (think more)
+
+\end{problem}
+
+
+
+\begin{problem}[4.33] Prove that if $\rho:X \times X \rightarrow \mathbb{R}_+$ is a metric, then\\
+(1) the function $(x,y) \mapsto \frac{\rho(x,y)}{1+\rho(x,y)}$ is a metric\\
+(2) the function $(x,y) \mapsto min\{\rho(x,y)\}$ is a metric\\
+(3) the function $(x,y) \mapsto f(\rho(x,y))$ is a metric if f satisfies the following conditions:\\
+
+(a) $f(0) = 0$\\
+
+(b) $f$ is a monotone increasing function, and\\
+
+(c) $f(x+y) \leq f(x) + f(y)$ for any $x,y \in \mathbb{R}$.
+
+% Hint: Assertion (c) is quite obvious. Assertions (a) and (b) follow from (c) for f(t) = t/(1+t) and f(t) = min{1,t}, respectively. Thus, it suffices to check that these functions satisfy the assumptions of assertion (c).
+
+Let us prove that given a metric space $(\rho, X)$, we can make new metrics
+\begin{align}
+    \rho_1 &: (x,y) \mapsto \frac{\rho(x,y)}{1+\rho(x,y)}\\
+    \rho_2 &: (x,y) \mapsto \min \{\rho(x,y),1\}\\
+    \rho_3 &: (x,y) \mapsto f(\rho(x,y))
+\end{align}
+where $x,y \in X$ and $f$ satisfies the following conditions: $f(0)=0$, $f$ is monotonically increasing, and $f(x+y_ \leq f(x)+f(y)$ for any $x,y \in \mathbb{R}$.
+\end{problem}
+
+\begin{problem}[4.27] Prove that two metrics $\rho_1$ and $\rho_2$ in $X$ are equivalent if there are numbers $c,C > 0$ such that $c\rho_1(x,y) \leq \rho_2(x,y) \leq C\rho_1(x,y)$ for any $x,y \in X$.\\
+
+% Hint: First, we prove that \Omega_2 \subset \Omega_1 provided that p_2(x,y) \leq Cp_1(x,y). Indeed, the inequality p_2 \leq Cp_1 implies B_r^{p_1}(a) \subset B_{Cr}^{p_2}. Now let us use Theorem 4.1. The inequality cp_1(x,y) ]leq p_2(x,y) can be written as p_1(x,y) \leq (1/c)(p_2(x,y). Hence \Omega_1 \subset \Omega_2. 
+
+Let us prove that two metrics $\rho_1$ and $\rho_2$ in $X$ are equivalent if there exists $c, C \in \mathbb{R}$ such that $c\rho_1(x,y) \leq \rho_2 (x,y) \leq C \rho_1 (x,y)$ for any $x,y \in X$.
+\end{problem}
+
+\begin{definition}[Section 8: Set theory]
+\end{definition}
+
+\begin{definition}[Section 9: Continuous maps]
+Let $X, Y$ be two topological spaces. A map $f:X\rightarrow Y$ is continuous if the preimage of any open subset of $Y$ is an open subset in $X$.
+\end{definition}
+
+\begin{problem}[9.A] We have $f(f^{-1}(B)) \subset B$ for any map $f:X \rightarrow Y$ and any $B \subset Y$.\\
+
+% Hint: If x in f^{-1}(B) then f(x) in B. 
+
+Let us show that a map is continuous if and only if the preimage of each closed set is closed. Since a closed set $y'\in Y$ is given by $Y\setminus y$ where $y\in Y$ is open, we need to show that the preimage of $Y \setminus y$ is a closed set $x'=X \setminus x$ where $x\in X$ is open. If the map is continuous, then the preimage of $y$ is open, which we can call $x$. Note that the image of $X\setminus x$ is $Y \setminus y$, the preimage of a closed set $y'=Y\setminus y$ is a closed set $x'=X\setminus x$. We also prove the other direction, starting by assuming that the preimage of each closed set is closed. For any closed set $y'\in Y$, we have its preimage $x'\in X$ which is closed. Then, we have $y=Y\setminus y'$ and $x=X\setminus x'$ which are both open. Note that the image of $x=X\setminus x'$ is precisely $Y\setminus y'$ since $x'$ is the preimage of $y'$. Hence, each open set $y$ has an open preimage $x$, meaning that the map is continuous.
+\end{problem}
+
+\begin{problem}[9.B] $f(f^{-1}(B)) = B$ iff $B \subset Im f$.\\
+
+% Hint: (->) Obvious. (<-) For each y in B, there exists an element x such that f(x) = y. By the definition of the preimage, x in f^{-1}(B), whence y in f(f^{-1}(B)). Thus B \subset f(f^{-1}(B)). The opposite inclusion holds true for any set, see 9.A. 
+
+Let us prove that the identity map $id: X \rightarrow X$ for any topological space $X$ is continuous. Note that the preimage of $x\in X$ is $x$, meaning that the preimage of each open set is open.
+\end{problem}
+
+\begin{problem}[4]
+Let us explicitly list images and kernels of each boundary map in the attached picture, and justify their dimensions. Also, let us try to compute the dimensions from the matrices describing the boundary maps.
+\end{problem}
+
+\begin{problem}[Coding 1: Due March 6]
+\end{problem}
+
+\begin{problem}[Coding 2: Due March 13]
+\end{problem}
+
+
+\end{document}
